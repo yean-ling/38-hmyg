@@ -1,0 +1,13 @@
+.swiper_wrap swiper {
+  height: 340rpx;
+}
+.navs {
+  display: flex;
+}
+.navs .nav_item {
+  flex: 1;
+  text-align: center;
+}
+.navs .nav_item image {
+  width: 50%;
+}

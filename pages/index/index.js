@@ -12,7 +12,9 @@
 Page({
     dara:{
         // 轮播图数组
-        swiperList:[]
+        swiperList:[],
+        // 导航
+        navs:[]
     },
     onLoad(){
       //1 发送异步请求
@@ -26,6 +28,16 @@ Page({
             })
               
           }
-      })  
+      });
+   // 2 获取导航数据
+   wx.request({
+       url:"https://api.zbztb.cn/api/public/v1/home/catitems",
+       success:(result) =>{
+         this.setData({
+         navs:result.data.message
+         })
+           
+       }
+   })
     }
 })
