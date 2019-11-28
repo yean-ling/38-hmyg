@@ -26,10 +26,16 @@
           float: left;
           width: 33.33%;
           image {
-         
+              // 去除图片默认的3px间隙
+         display: block;
           }
         }
-    
+    // 后4个超链接
+    .floor_item:nth-last-child(-n+40){
+        image{
+            height: (750rpx/3 * 386 / 232 / 2)+1 ;
+        }
+       }
       }
     }
   }

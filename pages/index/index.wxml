@@ -66,7 +66,7 @@
        -->
       <navigator class="floor_item" wx:for="{{item1.product_list}}" wx:for-item="item2" wx:for-index="index2"
         wx:key="item2.name">
-        <image src="{{item2.image_src}}" mode="widthFix"></image>
+        <image src="{{item2.image_src}}" mode="{{index2===0?'widthFix':'scaleToFill'}}"></image>
       </navigator>
     </view>
   </view>
