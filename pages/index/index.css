@@ -1,5 +1,5 @@
 .swiper_wrap swiper {
-  height: 340px;
+  height: 340rpx;
 }
 .navs {
   display: flex;
@@ -11,4 +11,8 @@
 }
 .navs .nav_item image {
   width: 70%;
+}
+.floor_wrap .floor_group .floor_group_content .floor_item {
+  float: left;
+  width: 33.33%;
 }

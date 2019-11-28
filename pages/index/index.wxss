@@ -3,11 +3,27 @@
 }
 .navs {
   display: flex;
+  padding: 5rpx 0;
 }
 .navs .nav_item {
   flex: 1;
   text-align: center;
 }
 .navs .nav_item image {
-  width: 50%;
+  width: 70%;
+}
+.floor_wrap .floor_group .floor_group_content {
+  overflow: hidden;
+  /* 后4个超链接 */
+}
+.floor_wrap .floor_group .floor_group_content .floor_item {
+  float: left;
+  width: 33.33%;
+}
+.floor_wrap .floor_group .floor_group_content .floor_item image {
+  /* 去除图片默认的3px间隙！！！ */
+  display: block;
+}
+.floor_wrap .floor_group .floor_group_content .floor_item:nth-last-child(-n + 4) image {
+  height: 208.97413793rpx;
 }

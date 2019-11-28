@@ -1,8 +1,9 @@
 {
   "pages": [
-    "pages/index/index",
+      "pages/index/index",
+      
     "pages/category/index",
-     "pages/goods_list/index",
+    "pages/goods_list/index", 
     "pages/gooods_detail/index",
     "pages/cart/index",
     "pages/collect/index",
@@ -12,12 +13,12 @@
     "pages/feedback/index",
     "pages/login/index",
     "pages/auth/index",
-    "pages/pay/index"
-    
+    "pages/pay/index",
+    "pages/index"
   ],
   "tabBar": {
-    "color":"#999",
-    "selectedColor":"#ff2d4a",
+    "color": "#999",
+    "selectedColor": "#ff2d4a",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -45,8 +46,6 @@
       }
     ]
   },
-  
-    
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
