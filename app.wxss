@@ -7,3 +7,7 @@ page,view,text,image,button,input,swiper,swiper-item,navigator,checkbox,rich-tex
   image{
   width: 100%;
 }
+
+page {
+  --themeColor:#eb4450;
+}

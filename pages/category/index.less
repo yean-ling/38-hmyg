@@ -1,0 +1,66 @@
+.cate_view {
+    height: calc(100vh - 80rpx);
+    /*background-color: aqua;*/
+    display: flex;
+}
+
+.cate_menus {
+    /*子项的高度默认等于 = 父项的高度*/
+    /* height: 100%*/
+    width: 200rpx;
+    /*background-color: red;*/
+    /* 不超的时候就没有滚动条， 超出了就有滚动条*/
+    overflow: auto;
+
+}
+.menu_item {
+    height: 80rpx;
+    font-size: 28rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu_item.active{
+  // currentColor 是原生的css的属性 == 当前的字体的颜色  
+    color: var(--themeColor);
+    border-left: 5rpx solid currentColor;
+}
+
+.cate_goods {
+    flex: 1;
+    /*background-color: yellow;*/
+    /* 不超的时候就没有滚动条， 超出了就有滚动条*/
+    overflow: auto;
+
+
+    .goods_group {
+        .goods_group_title {
+            height: 80rpx;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26rpx;
+        }
+
+        .goods_group_content {
+            display: flex;
+            flex-wrap: wrap;
+
+            .goods_item {
+                width: 33.33%;
+                text-align: center; 
+                font-size: 24rpx;
+                color: #666666;
+
+                image {
+                    width: 50%;
+                }
+
+                .item_name {
+                    background: #666666
+                }
+            }
+        }
+    }
+
+}   
