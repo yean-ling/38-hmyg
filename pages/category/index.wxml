@@ -39,7 +39,7 @@
                / {{item1.cat_name}} /
             </view>
             <view class="goods_group_content">
-                <navigator url="/pages/goods_list/index?cid" class="goods_item" wx:for="{{item1.children}}" wx:for-item="item2" wx:for-index="index2" wx:key="cat_id">
+                <navigator url="/pages/goods_list/index?cid={{item2.cat_id}}" class="goods_item" wx:for="{{item1.children}}" wx:for-item="item2" wx:for-index="index2" wx:key="cat_id">
                     <image mode="widthFix" src="{{item2.cat_icon}}"></image>
                     <view class="item_nname">
                         {{item2.cat_name}}

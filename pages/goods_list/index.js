@@ -1,66 +1,77 @@
-// pages/feedback/index.js
+/*
+1 在分页面 商品动态渲染的时候 加上 超链接 和 对应的分类id
+定义
+*/
+
+
+import request from "../../request/request";
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
+  // 全局的接口参数
+  Params:{
+    // 查询关键字 "小米"
+    query:"",
+    // 分类id
+    cid:-1,
+    // 页码 第几页
+    Pagenum:1,
+    // 也容量 -> 每一页可以放几条数据
+    pagesize:10
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  data:{
+    // 要显示的商品列表
+    goods:[]
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  onLoad(options){
+    this.Params.cid=options.cid;
 
+    this.getList();
+    
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+  // 获取商品列表数据
+  getList(){
+    request({
+      url:"goods/search",
+      data: this.Params
+    })
+    .then(res=>{
+      console.log(res);  
+      // 旧的数组
+  const { goods } = this.data;
+      this.setData({
+        // 当我们做分页 总数为数据 应该是不断 追加的！！
+       goods: [...goods,...res.data.message.goods]
+      })
 
+     //计算总页数
+     this.TotalPages=Math.ceil(res.data.message.total / this.Params.pagesize);
+      console.log( this.TotalPages);
+      
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  // 滚动条 触底事件
+  onReachBottom(){
+        // 1 判断还有没有下一页数据
+        if (this.Params.pagesize >= this.TotalPages){
+          // 没有下一页数据
+          console.log("没有下一夜数据");
+          
+        }else {
+          //有下一页数据
+          this.Params.Pagenum++;
+          // 发送请求获取下一页的数据
+          this.getList();
+        }
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  // 下拉刷新
+  onPullonPullDownRefresh(){
+    this.Params.Pagenum=1;
+    this.setData({
+      goods:[]
+    })
+    this.getList();
   }
 })
