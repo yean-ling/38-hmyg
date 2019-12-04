@@ -1,2 +1,66 @@
-<!--pages/goods_detail/index.wxml-->
-<text>pages/goods_detail/index.wxml</text>
+<!-- 轮播图开始 -->
+<view class="goods_detail_swiper">
+    <swiper indicator-dots autoplay circular>
+        <swiper-item 
+        wx:for="{{goodsInfo.pics}}"
+        wx:key="pics_id">
+        <image mode="widthFix" src="{{item.pics_mid}}"></image>
+        </swiper-item>    
+        
+    </swiper>       
+</view>
+<!-- 轮播图结束 -->
+
+
+<!-- 价格开始 -->
+<view class="goods_price">
+   ￥ {{goodsInfo.goods_price}}
+</view>
+<!-- 价格结束 -->
+
+
+<!-- 商品名称开始 -->
+<view class="goods_name_wrap">
+    <view class="goods_name">{{goodsInfo.goods_name}}</view>
+    <view class="goods_name_collect">
+        <view class="iconfont icon-shoucang"></view>
+            <view class="icom_name">收藏</view>
+    </view>    
+</view>
+<!-- 商品名称结束 -->
+
+<!-- 图文详情开始 -->
+<view class="goods_desc">
+    <view class="goods_desc_title">图片详情</view>
+    <view class="goods_decs_content">
+        <!-- 富文本标签 rich-text -->
+        <rich-text nodes="{{goodsInfo.goods_introduce}}">          
+        </rich-text>        
+    </view>         
+</view>
+  
+<!-- 图片详情结束 -->
+
+
+<!-- 底部工具栏开始 -->
+<view class="btm_tools">
+    <view class="tool_item">
+       <text class="iconfont icon-kefu"></text>
+      <view>客服</view>
+    </view>
+      <view class="tool_item">
+        <text class="iconfont icon-yixianshi-"></text>
+       <view>分享</view>
+      </view>
+       <view class="tool_item">
+        <text class="iconfont icon-gouwuche"></text>
+       <view>购物车</view>      
+    </view>
+     <view class="tool_item">
+         加入购物车
+     </view>
+     <view class="tool_item">
+         立即购买
+     </view>     
+</view>
+<!-- 底部工具栏 结束 -->

@@ -1,4 +1,4 @@
-
+@import "./styles/iconfont.wxss";
 page,view,text,image,button,input,swiper,swiper-item,navigator,checkbox,rich-tex{
   margin: 0;
   padding: 0;
