@@ -1,66 +1,62 @@
-// pages/cart/index.js
+/*
+1 获取用户的收货地址
+
+*/
+
+import regeneratorRuntime from '../../lib/runtime/runtime';
+import {getSetting,chooseAddress,openSetting} from "../../utils/wxAsync";
+
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
+  handleChooseAddress(){
+    wx.chooseAddress({
+      success: (result)=>{
+        console.log("成功");
+        console.log(result);
+        
+      },
+      fail:(err) =>{
+        console.log("失败");
+        console.log(err);
+        
+        
+      }
+    })
   },
+ // 获取用户的授权的状态
+ handleGetAuth(){
+   wx.getSetting({
+     success:(result)=>{
+       console.log(result);
+       
+     },
+     fail:()=>{ },
+     complete:() =>{ }
+   });
+ },
+ // js的方式打开设置页面
+ handleOpenSetting(){
+   wx.openSetting({
+     success: (result) => {
+       
+     },
+     fail: () => { },
+     complete: () => { }
+   });
+     
+ },
+  async handleFinalGet(){
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  // 1获取用户的授权状态
+  const auth= (await getSetting()).authSetting["scope.address"]
+  if(auth === false) {
+    // auth === false
 
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    await openSetting();
   }
+   await chooseAddress();
+ 
+  
+  
+ }
 })
