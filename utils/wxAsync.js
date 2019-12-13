@@ -42,7 +42,7 @@ export const chooseAddress = ()=>{
 
 export const openSetting= ()=>{
     return new Promise((resolve,reject) =>{
-        wx.wx.openSetting({
+        wx.openSetting({
             success: (result) => {
             resolve(result);
                 

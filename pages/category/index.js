@@ -65,7 +65,7 @@ Page({
   },
   // 全局的内部的数据 wxml中找不到 Cates
    // js内部要使用的全局数据
-  Cates:[],
+  cates:[],
   onLoad(){
       // 假设缓存 这样存数据 list 格式 = this.Cates
       // set("cates",{list:[],time:"1575017617705"})
@@ -87,11 +87,11 @@ Page({
         }else{
           //没有过期
           // console.log("没有过期");
-          this.Cates = cates.list;
+          this.cates = cates.list;
           this.setData({
-            leftMenus:this.Cates.map(v=>v.cat_name),
+            leftMenus:this.cates.map(v=>v.cat_name),
             //右侧的内容
-            rightGoods:this.Cates[this.data.currentIndex].children
+            rightGoods:this.cates[this.data.currentIndex].children
           })
           
         }
@@ -103,22 +103,21 @@ Page({
 
   // 发送异步请求
   getCates(){
-    request({url:"categories"})
+    request({ url: "categories" })
     .then(res => {
-      //  console.log(res.data.message);
-      this.Cates = res.data.message   
+      this.cates = res.data.message   
     // 给左侧菜单数组赋值
     this.setData({
-      leftMenus:this.Cates.map(v=>v.cat_name),
+      leftMenus:this.cates.map(v=>v.cat_name),
       //右侧的内容
-      rightGoods:this.Cates[this.data.currentIndex].children
+      rightGoods:this.cates[this.data.currentIndex].children
     })
     //  //右侧要实现的商品数组
     //  this.setData({
        
     //  })
       //把数据存到缓存中
-      wx.setStorageSync("cates",{list:this.Cates,time:Date.now()}); 
+      wx.setStorageSync("cates",{list:this.cates,time:Date.now()}); 
     })
   },
 
@@ -128,7 +127,7 @@ Page({
     this.setData({
       currentIndex,
       // 右侧的内容
-      rightGoods: this.Cates[currentIndex].children,
+      rightGoods: this.cates[currentIndex].children,
       // 控制右侧列表的滚动条的 距离！！
       scrollTop:0
     })

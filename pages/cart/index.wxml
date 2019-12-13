@@ -1,7 +1,71 @@
-<!--pages/cart/index.wxml-->
-<text>pages/cart/index.wxml</text>
-<button bindtap="handleChooseAddress">获取用户的收货 选择 地址</button>
-<button bindtap="handleGetAuth">获取用户的授权状态 auth</button>
-<view bindtap="handleOpenSetting">js的方式来打开权限页面</view>
-<button bindtap="handleFinalGet">最终的版本</button>
-  
+<view class="address_view">
+    <!-- 当没有收货地址的时候就是显示按钮 -->
+    <button wx:if="{{!address.userName}}" bindtap="handleFinalGet">获取收货地址</button>
+    <!-- 有收货地址了 就显示 收货地址即可 -->
+    <view wx:else>{{address.userName}}</view>
+
+</view>
+
+<!-- 购物车 开始-->
+<view class="cart_content">
+    <view wx:if="{{carts.length}}">
+        <!-- 标题 -->
+        <view class="{{carts_title}}">购物车</view>
+        <!-- 内容 -->
+        <view class="carts_list">
+            <view class="cart_item" wx:for="{{carts}}" wx:key="goods_id">
+                <!-- 复选框 -->
+                <view class="cart_chk_wrap">
+                    <checkbox-group bindchange="checkboxChange" data-index="{{index}}">
+                        <checkbox checked="{{item.isChecked}}"></checkbox>
+                    </checkbox-group>
+                </view>
+                <!-- 商品图片 -->
+                <view class="cart_img_wrap">
+                    <image mode="widthFix" src="{{item.goods_small_logo}}"></image>
+                </view>
+                <!-- 商品信息 -->
+                <view class="cart_info">
+                    <view class="goode_name">{{item.goods_name}}</view>
+                    <view class="goods_price_wrap">
+                        <view class="goods_price">{{item.goods_price}}</view>
+                        <view class="cart_tool">
+                            <view bindtap="handleNumUpdate" data-index="{{index}}" data-unit="{{-1}}"
+                                class="num_item nums_btn">-</view>
+                            <view class="num_item">{{item.nums}}</view>
+                            <view bindtap="handleNumUpdate" data-index="{{index}}" data-unit="{{1}}"
+                                class="num_item nums_btn">+</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+        </view>
+
+
+    </view>
+    <view wx:else>
+        <image mode="widthFix"
+            src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2999423173,2604381222&fm=26&gp=0.jpg">
+        </image>
+    </view>
+
+</view>
+
+<!-- 购物车 结束-->
+
+<view class="btm_count_wrap">
+
+    <view class="all_check_wrap">
+        <checkbox-group bindchange="handleItemAll">
+            <checkbox checked="{{allChecked}}"> 全选 </checkbox>
+        </checkbox-group>
+    </view>
+    <view class="all_price_wrap">
+        总价格:<text>￥{{totalPrice}}</text>
+    </view>
+    <view class="account" bindtap="goAccount">
+        结算({{nums}})
+    </view>
+
+</view>

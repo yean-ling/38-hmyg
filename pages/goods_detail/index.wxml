@@ -59,7 +59,7 @@
        <view>购物车</view>
 
     </navigator>
-     <view class="tool_item">
+     <view class="tool_item"  bindtap="handleGoodsAdd">
          加入购物车
      </view>
      <view class="tool_item">
